@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[IA]201801119_P2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Proyecto 2, 201801119, Modelos de Inteligencia Artificial</h1>
+
+    <!-- Selector de modelo -->
+    <section id="selector-container">
+        <label for="model-selector">Seleccionar Modelo:</label>
+        <select id="model-selector">
+            <option value="" selected disabled>Seleccione una opción</option>
+            <option value="polynomial-regression">Regresión Polinomial</option>
+            <option value="decision-tree">Árbol de Decisión ID3</option>
+            <option value="kmeans-section">K-Means</option>
+        </select>
+    </section>
+
+    <!-- Sección de Regresión Polinomial -->
+    <section id="polynomial-regression" class="model-section">
+        <h2>Regresión Polinomial</h2>
+        <div id="canvas-container">
+            <canvas id="polynomial--canva" width="940" height="400"></canvas>
+        </div>
+        <div id="controls-container">
+            <input type="file" id="polynomial--file" accept=".csv">
+            <input type="number" id="polynomial-degree" placeholder="Grado del polinomio" min="1" />
+            <button class="button button-primary" id="polynomial--btn-fit" type="button">Adaptar</button>
+            <button class="button button-secondary" id="polynomial--btn-predict" type="button" disabled>Predecir</button>
+            <button class="button button-tertiary" id="polynomial--btn-mse" type="button" disabled>MSE</button>
+            <button class="button button-tertiary" id="polynomial--btn-r2" type="button" disabled>Coeficiente R2</button>
+        </div>        
+        <div id="results-container">
+            <h3>Resultado</h3>
+            <p id="poly-fit-result"></p>
+            <p id="poly-predict-result"></p>
+            <p id="poly-mse-result"></p>
+            <p id="poly-r2-result"></p>
+        </div>
+    </section>
+
+    <!-- Sección de Árbol de Decisión ID3 -->
+    <section id="decision-tree" class="model-section">
+        <h2>Árbol de Decisión ID3</h2>
+        <div id="controls-container">
+            <label for="training-file">Cargar archivo de Entrenamiento:</label>
+            <input type="file" id="training-file" accept=".csv">
+            <label for="predict-file">Cargar archivo de Predicción [opcional]:</label>
+            <input type="file" id="predict-file" accept=".csv">
+            <button class="button button-primary" id="btngenerate" type="button">Generar Árbol</button>
+            <button class="button button-secondary" id="predict" type="button">Predecir</button>
+        </div>        
+        <div id="results-container">
+            <h3>Resultado</h3>
+            <p id="prediction"></p>
+        </div>
+        <div id="canvas-container">
+            <div id="treed" style="width: 640px; height: 400px;"></div>
+        </div>
+        
+    </section>
+
+    <!-- Sección de Clustering K-Means -->
+    <section id="kmeans-section" class="model-section">
+        <h2>Clustering K-Means</h2>
+        <div id="canvas-container">
+            <canvas id="chartkmean" width="940" height="400"></canvas>
+        </div>
+        <div id="controls-container">
+            <label for="data-file">Cargar archivo de data:</label>
+            <input type="file" id="data-file" accept=".csv">
+            <label for="config-file">Cargar archivo de configuración:</label>
+            <input type="file" id="config-file" accept=".csv">
+            <button class="button button-primary" id="btnLineal" type="button">Ejecutar K-means</button>
+        </div>
+
+    </section>
+
+
+
+    <!-- Scripts para cada modelo -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.5/dist/chart.umd.min.js"></script>
+    <script src="https://unpkg.com/vis-network@9.1.9/dist/vis-network.min.js"></script>
+
+    <script src="tytusjs/PolynomialModel.js"></script>
+    <script src="scripts/PolynomialScript.js"></script>
+
+    <script src="tytusjs/DecisionTreeID3.js"></script>
+    <script src="scripts/DecisionTreeScript.js"></script>
+
+    <script src="tytusjs/kmeans.js"></script>
+    <script src="scripts/KMeansScript.js"></script>
+
+    <script src="scripts/SelectorScript.js"></script>
+</body>
+
+</html>
