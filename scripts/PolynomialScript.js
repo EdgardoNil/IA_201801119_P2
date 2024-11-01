@@ -66,23 +66,17 @@ const predecirModeloPoli = () => {
   prediccionesPoly = instanciaPolinomial.predict(varsXPoli);
 
   // Habilitar los botones de MSE y R2 una vez que se ha hecho la predicción
-  btnMSEPoly.disabled = false;
   btnR2Poly.disabled = false;
 
   renderizarGraficoPoli();
   resultadoPrediccionPoly.textContent = "Predicciones realizadas.";
 };
 
-// Acción: MSE (Error Cuadrático Medio)
-const calcularMSEPoli = () => {
-  const mse = instanciaPolinomial.getError();
-  resultadoMSEPoly.textContent = `El MSE del modelo es: ${mse.toFixed(4)}`;
-};
 
 // Acción: Coeficiente R2
 const calcularR2Poli = () => {
   const r2 = instanciaPolinomial.getError();
-  resultadoR2Poly.textContent = `El Coeficiente R2 del modelo es: ${r2.toFixed(4)}`;
+  resultadoR2Poly.textContent = `Coeficiente R2 del modelo es: ${r2.toFixed(4)}`;
 };
 
 // Variable para almacenar la instancia del gráfico
@@ -150,5 +144,4 @@ const renderizarGraficoPoli = () => {
 // Event listeners
 btnAjustarPoly.addEventListener("click", ajustarModeloPoli);
 btnPredecirPoly.addEventListener("click", predecirModeloPoli);
-btnMSEPoly.addEventListener("click", calcularMSEPoli);
 btnR2Poly.addEventListener("click", calcularR2Poli);
